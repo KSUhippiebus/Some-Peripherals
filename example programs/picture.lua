@@ -4,7 +4,7 @@ local rc = peripheral.find("raycaster")
 
 local euler_mode = false
 local depth_map = false
-local cache = false
+local seeBlocks = true
 
 local width_yaw_range = math.rad(45)
 local height_pitch_range = math.rad(45)
@@ -149,7 +149,7 @@ for x=1, width do
     local yr = y_axis[y]
     local xr = x_axis[x]
 
-    local item = rc.raycast(max_distance, {yr, xr, vector_fov}, euler_mode, true, cache)
+    local item = rc.raycast(max_distance, {yr, xr, vector_fov}, euler_mode, true, seeBlocks)
     local pix = depth_map and get_pixel_depthmap(item) or get_pixel_normal(item)
     monitor.blit(pix[1], pix[2], pix[3])
 end end
